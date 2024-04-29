@@ -1,0 +1,13 @@
+Generic single-database configuration.
+
+This is a database migration tool
+If you change tables in the database, you can use this tool to update the database schema.
+
+[Documentation](https://alembic.sqlalchemy.org/en/latest/api/ddl.html)
+
+
+# How to use
+`alembic upgrade head` - upgrade to the latest migration
+`alembic revision --autogenerate -m "message"` - create a new migration
+`alembic upgrade +1` - upgrade 1 migration
+`alembic downgrade -1` - rollback 1 migration
