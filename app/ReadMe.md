@@ -31,6 +31,9 @@ q: Annotated[
 
 # PRODUCTION:
 - Set environment variables on a machine not just in .env file
+- `uvicorn --host 0.0.0.0 app.main:app` (so you can access from anywhere)
+- gunicorn for production, so you can run multiple instances of the app: `gunicorn -w 4 -k uvicorn.workers.UvicornWorker app.main:app --bind 0.0.0.0:8000`
+- sudo systemctl enable `[name-of-service-api]` - so it reloads on boot
 
 
 ## Secure Authentication
