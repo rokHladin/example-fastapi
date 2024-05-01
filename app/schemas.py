@@ -56,7 +56,7 @@ class UserOut(BaseModel):
     email: EmailStr
     created_at: datetime
 
-    class Config:
+    class ConfigDict:
         """
         Configuration class for the schema.
 
@@ -83,7 +83,7 @@ class Post(PostBase):
     owner_id: int
     owner: UserOut
 
-    class Config:
+    class ConfigDict:
         """
         Configuration class for the schema.
         """
