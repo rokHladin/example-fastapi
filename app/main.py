@@ -40,4 +40,4 @@ def root():
 
     :return: A dictionary with a message.
     """
-    return {"message": "Pozdravljeni na mojem api, uspešno deplojano iz CI/CD pipline!"}
+    return {"message": "Pozdravljeni na mojem api, uspešno deplojano iz CI/CD pipline, ubuntu!"}

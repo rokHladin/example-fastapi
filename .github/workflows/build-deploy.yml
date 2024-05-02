@@ -59,9 +59,24 @@ jobs:
     steps:
       - name: pulling git repo
         uses: actions/checkout@v4
-      - name: Deploy to Heroku
-        uses: akhileshns/heroku-deploy@v3.13.15 # This is the action
+      # - name: Deploy to Heroku
+      #   uses: akhileshns/heroku-deploy@v3.13.15 # This is the action
+      #   with:
+      #     heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+      #     heroku_app_name: ${{secrets.HEROKU_APP_NAME}} #Must be unique in Heroku
+      #     heroku_email: ${{secrets.HEROKU_EMAIL}}
+
+      - name: Deploy to Ubuntu Server
+        uses: appleboy/ssh-action@master
         with:
-          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: ${{secrets.HEROKU_APP_NAME}} #Must be unique in Heroku
-          heroku_email: ${{secrets.HEROKU_EMAIL}}
+          host: ${{secrets.PROD_HOST}}
+          username: ${{secrets.PROD_USERNAME}}
+          key: ${{secrets.PROD_KEY}}
+          script: |
+            cd app/src
+            git pull
+            sudo systemctl restart api
+      # login to ubuntu server
+      # cd /app/src
+      # git pull
+      # systemctl restart api
